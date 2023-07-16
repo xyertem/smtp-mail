@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+  </head>
+  <body>
+    <button onclick="sendEmail()">Mail gönder</button>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail() {
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          port: 2525, // 465 25 587 2525
+          EnableSsl: false,
+          Username: credentials.yourusername,
+          Password: credentials.yourpassword,
+          To: credentials.defaultTo,
+          From: credentials.defaultFrom,
+          Subject: "Test email",
+          Body: "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>",
+        }).then((message) => alert(message));
+      }
+    </script>
+  </body>
+</html>
